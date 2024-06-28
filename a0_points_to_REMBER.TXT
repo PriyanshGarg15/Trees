@@ -1,0 +1,25 @@
+In Java, primitive types such as int, float, boolean, etc., cannot hold null values. This is because primitives are not objects 
+and therefore do not have the ability to represent the absence of a value. Here are more detailed reasons:
+
+Primitive Types vs. Reference Types
+
+Primitive Types:
+Represent raw values directly.
+Cannot be null because they are not objects; they are stored directly in memory.
+Examples include int, char, double, etc.
+
+Reference Types:
+Represent references (or pointers) to objects.
+Can be null, indicating that the reference does not point to any object.
+Examples include classes, arrays of objects, and interfaces, such as Integer, String, Object[], etC.
+
+
+-------------------
+
+
+Queue is FIFO structure in java
+
+
+-------------------
+
+level-order traversal is the same as breadth-first traversal.
