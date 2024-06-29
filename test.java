@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class a25_burning_tree {
+public class test {
     public static class Node {
         int data;
         Node left;
@@ -23,7 +23,8 @@ public class a25_burning_tree {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         //           50
@@ -67,82 +68,49 @@ public class a25_burning_tree {
                 st.pop();
             }
         }
-        int time = burningTree(root, 12);
+        int time = goodNodes(root);
         System.out.println(time);
     }
 
-    public static int burningTree(Node root, int target) {
+    public static int goodNodes(Node root) {
         if (root == null) {
-            return -1;
+            return 0;
         }
-        Map<Node, Node> parentMap = new HashMap<>();
-        Node targetNode = getParentMap(root, parentMap, target);
-        if (targetNode == null) 
-        {
-            return -1;
-        }
-        Set<Node> visited = new HashSet<>();
+
         Queue<Node> queue = new LinkedList<>();
-        queue.add(targetNode);
-        visited.add(targetNode);
-        int time = 0;
+        queue.add(root);
+        int goodCount = 0;
+
         while (!queue.isEmpty()) {
             int size = queue.size();
-            boolean burned = false;
-
             for (int i = 0; i < size; i++) {
                 Node currentNode = queue.poll();
 
-                if (currentNode.left != null && !visited.contains(currentNode.left)) {
+                // Check if the current node is a good node
+                if (isGoodNode(currentNode)) {
+                    goodCount++;
+                }
+
+                if (currentNode.left != null) {
                     queue.add(currentNode.left);
-                    visited.add(currentNode.left);
-                    burned = true;
                 }
-
-                if (currentNode.right != null && !visited.contains(currentNode.right)) {
+                if (currentNode.right != null) {
                     queue.add(currentNode.right);
-                    visited.add(currentNode.right);
-                    burned = true;
                 }
-
-                Node parent = parentMap.get(currentNode);
-                if (parent != null && !visited.contains(parent)) {
-                    queue.add(parent);
-                    visited.add(parent);
-                    burned = true;
-                }
-            }
-            if (burned) {
-                time++;
             }
         }
 
-        return time;
+        return goodCount;
     }
 
-    public static Node getParentMap(Node root, Map<Node, Node> parentMap, int target) {
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-        Node targetNode = null;
-
-        while (!queue.isEmpty()) {
-            Node currentNode = queue.poll();
-
-            if (currentNode.data == target) {
-                targetNode = currentNode;
+    private static boolean isGoodNode(Node node) {
+        Node parent = node;
+        while (parent != null) {
+            if (node.data < parent.data) {
+                return false;
             }
-
-            if (currentNode.left != null) {
-                parentMap.put(currentNode.left, currentNode);
-                queue.add(currentNode.left);
-            }
-
-            if (currentNode.right != null) {
-                parentMap.put(currentNode.right, currentNode);
-                queue.add(currentNode.right);
-            }
+            parent = parent.left != null ? parent.left : parent.right;
         }
-
-        return targetNode;
+        return true;
     }
 }
