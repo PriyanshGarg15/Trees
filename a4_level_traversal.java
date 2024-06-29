@@ -146,7 +146,6 @@ public class a4_level_traversal {
         Stack<Pair> st = new Stack<>();
         st.push(rp);
         int idx = 0;
-
         while (st.size() > 0) {
             Pair top = st.peek();
             if (top.state == 1) {

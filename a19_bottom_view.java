@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class a18_top_view {
+public class a19_bottom_view {
     public static class Node {
         int data;
         Node left;
@@ -27,8 +27,8 @@ public class a18_top_view {
         Integer[] arr = {50, 25, null, 37, null, 30, null, 55, null, null, 75, 62, null, null, 87};
 
         Node root = constructTree(arr);
-        List<Integer> topView = topView(root);
-        System.out.println(topView);
+        List<Integer> bottomView = bottomView(root);
+        System.out.println(bottomView);
     }
 
     public static Node constructTree(Integer[] arr) {
@@ -73,7 +73,7 @@ public class a18_top_view {
         return root;
     }
 
-    public static List<Integer> topView(Node node) {
+    public static List<Integer> bottomView(Node node) {
         if (node == null) {
             return new ArrayList<>();
         }
@@ -87,10 +87,8 @@ public class a18_top_view {
             int hl = qp.hd;
             Node n = qp.node;
 
-            // If this horizontal distance is being seen for the first time
-            if (!map.containsKey(hl)) {
-                map.put(hl, n.data);
-            }
+            // Overwrite the data at each horizontal distance
+            map.put(hl, n.data);
 
             if (n.left != null) {
                 queue.add(new Pair(n.left, hl - 1));
@@ -99,12 +97,12 @@ public class a18_top_view {
                 queue.add(new Pair(n.right, hl + 1));
             }
         }
-        System.out.println(map.entrySet());
-        List<Integer> topView = new ArrayList<>();
+
+        List<Integer> bottomView = new ArrayList<>();
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            topView.add(entry.getValue());
+            bottomView.add(entry.getValue());
         }
 
-        return topView;
+        return bottomView;
     }
 }

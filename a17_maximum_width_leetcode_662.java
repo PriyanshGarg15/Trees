@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class a18_maximum_width_leetcode_662 {
+public class a17_maximum_width_leetcode_662 {
     public static class Node {
         int data;
         Node left;

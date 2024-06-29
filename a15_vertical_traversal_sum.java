@@ -99,7 +99,7 @@ public class a15_vertical_traversal_sum {
         List<Integer> ans = new ArrayList<>();
         for (int i = minhd; i <= maxhd; i++) 
         {
-                ans.add(map.get(i));
+            ans.add(map.get(i));
         }
 
         return ans;
