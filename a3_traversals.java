@@ -26,6 +26,13 @@ public class a3_traversals {
 
     public static void main(String[] args) {
         Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
+        //           50
+        //         /    \
+        //       25      75
+        //      /  \    /  \
+        //    12   37  62   87
+        //         /    \
+        //        30    70
         Node root = new Node(arr[0], null, null);
         Pair rp = new Pair(root, 1);
         Stack<Pair> st = new Stack<>();

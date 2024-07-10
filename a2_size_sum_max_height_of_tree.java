@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class a2_size_sum_max_height_of_tree {
     public static class Node {
         int data;
@@ -25,6 +24,13 @@ public class a2_size_sum_max_height_of_tree {
 
     public static void main(String[] args) {
         Integer[] arr = {50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
+        //           50
+        //         /    \
+        //       25      75
+        //      /  \    /  \
+        //    12   37  62   87
+        //         /    \
+        //        30    70
         Node root = new Node(arr[0], null, null);
         Pair rp = new Pair(root, 1);
         Stack<Pair> st = new Stack<>();
@@ -59,7 +65,6 @@ public class a2_size_sum_max_height_of_tree {
                 st.pop();
             }
         }
-        display(root);
         int pg=size(root);
         System.out.println(pg);
         int sg=sum(root);
@@ -68,23 +73,10 @@ public class a2_size_sum_max_height_of_tree {
         System.out.println(h);
     }
 
-    public static void display(Node node) {
-        if (node == null) {
-            return;
-        }
-        String str = "";
-        str += node.left == null ? "." : node.left.data + "";
-        str += "<-" + node.data + "->";
-        str += node.right == null ? "." : node.right.data + "";
-        System.out.println(str); 
-        display(node.left);
-        display(node.right);
-    }
-
     public static int size(Node node) {
         if(node ==null)
         {
-            return 1;
+            return 0;
         }
         int ls=size(node.left);
         int rs=size(node.right);

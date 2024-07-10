@@ -73,24 +73,21 @@ public class test {
     }
 
     public static int goodNodes(Node root) {
-        if (root == null) {
+        if (root == null) 
+        {
             return 0;
         }
 
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
         int goodCount = 0;
-
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
                 Node currentNode = queue.poll();
-
-                // Check if the current node is a good node
                 if (isGoodNode(currentNode)) {
                     goodCount++;
                 }
-
                 if (currentNode.left != null) {
                     queue.add(currentNode.left);
                 }
@@ -103,7 +100,7 @@ public class test {
         return goodCount;
     }
 
-    private static boolean isGoodNode(Node node) {
+    public static boolean isGoodNode(Node node) {
         Node parent = node;
         while (parent != null) {
             if (node.data < parent.data) {

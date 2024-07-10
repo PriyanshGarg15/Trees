@@ -139,8 +139,8 @@ public class a4_level_traversal {
         //       25      75
         //      /  \    /  \
         //    12   37  62   87
-        //           /    \
-        //          30    70
+        //         /    \
+        //        30    70
         Node root = new Node(arr[0], null, null);
         Pair rp = new Pair(root, 1);
         Stack<Pair> st = new Stack<>();
